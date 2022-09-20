@@ -2,7 +2,7 @@
 
 座席の登録と登録されている人の検索が行えるアプリです。
 
-![](https://github.com/KDDI-tech/seatmap-work2/blob/main/doc/image/image.png?raw=true)
+![](https://github.com/KDDI-tech/seatmap-work2/blob/main/doc/img/image.png?raw=true)
 
 ## 概要
 
