@@ -1,0 +1,16 @@
+{
+  "name": "moc",
+  "version": "1.0.0",
+  "description": "moc server",
+  "type": "module",
+  "main": "app.mjs",
+  "scripts": {
+    "start": "node ./app.mjs"
+  },
+  "author": "KDDI Technology",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.1"
+  }
+}
