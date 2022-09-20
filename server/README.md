@@ -1,4 +1,4 @@
-# seatmap-work/server
+# seatmap/server
 DBサーバー用
 
 各APIの仕様 -> APIDoc.md  

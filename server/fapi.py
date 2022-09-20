@@ -57,11 +57,18 @@ async def seatlock(lb: LockBody):
 
 @app.get("/search")
 async def search(name: str=""):
-    matched = df[df["name"] == name]
-    print(matched)
-    if len(matched) and not (list(matched["seatID"])[0] == ""):
-        return {"name": name, "seatID": list(matched["seatID"])[0]}
-    elif len(matched):
+    while match_count != 1:
+        ans = -1
+        match_count = 0
+        for i,n in enumerate(df):
+            for j in range(len(n["name"])):
+                if name == n["name"][:j+1]:
+                    match_count += 1
+                    ans = i
+                    break
+    if ans != -1:
+        return {"name": list(df[ans]["name"])[0], "studentID":list(df[ans]["seatID"])[0], "seatID": list(df[ans]["seatID"])[0]}
+    elif list(df[ans]["seatID"])[0] == "":
         res = JSONResponse(content={"message": "その名前の学生は出席していません"}, status_code=401)
         return res
     else:

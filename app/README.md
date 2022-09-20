@@ -1,4 +1,4 @@
-# seatmap-work2
+# seatmap
 - register
 -     index.html          //座席を登録するためのアプリ
 - viewer
