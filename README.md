@@ -16,7 +16,7 @@
 ### 1. 本repoをcloneする
 
 ```
-git clone git@github.com:KDDI-tech/seatmap-work2.git
+git clone git@github.com:KDDI-tech/seatmap.git
 ```
 
 ### 2. データの追加及び削除
@@ -115,6 +115,4 @@ npm start
 
 ## License
 
-[MITライセンス](https://github.com/KDDI-tech/seatmap-work2/blob/main/LICENSE)です。
-
-
+[MITライセンス](https://github.com/KDDI-tech/seatmap/blob/main/LICENSE)です。
