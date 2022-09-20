@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>座席登録</title>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8;"/>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
+    <style>
+      #bViewSeatMap {
+        display: flex;
+        font-size: 24px;
+        background-color: aqua;
+        cursor: pointer;
+      }
+      html,body {
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="bViewSeatMap">座席登録ツール</div>
+    <div class="getPersonalInfo" id="getInfo"></div>
+    <input type="text" id="textBox" value="学籍番号を入力してください"></input>
+    <button id="button">決定</button>
+    <div id="txt"></div>
+    <div id="txt2"></div>
+    </div>
+
+    <script type="module">
+    import getPersonalInfo from "./src/getPersonalInfo.js";
+
+     //textbox透かし
+     var textbox = document.getElementById( 'textBox' );
+    textbox.onfocus = function()
+    {
+      if( this.value == this.defaultValue )
+        {
+          this.value = '';
+          this.style.color = '';
+        }
+    }
+    textbox.onblur = function()
+    {
+      if( this.value == '' )
+        {
+          this.value = this.defaultValue;
+          this.style.color = 'gray';
+        }
+    }
+    textbox.defaultValue = textbox.value;
+    textbox.value = '';
+    textbox.onblur();
+    
+    const $text = document.getElementById("txt");
+    const $text2 = document.getElementById("txt2");
+    const $textbox = document.getElementById("textbox");
+    const $button = document.getElementById("button");
+    const $getInfo = document.querySelector("#getInfo");
+    var seatStatus = null;
+    func();
+
+    //ボタン設定
+    $button.onclick = ((e)=>{
+      checkID(textbox.value);
+    });
+
+    async function checkID(studentID){
+      var studentInfo = await getPersonalInfo.refStudentID(studentID);
+      if(studentInfo.name){
+        textbox.style.display = "none";
+        button.style.display = "none";
+        $text.innerHTML = `利用者　${studentInfo.name}さん(学籍番号:${studentInfo.studentID})`;
+        $text2.innerHTML = "予約する席をクリックしてください";
+        getPersonalInfo.eventSetting(seatStatus,$text,$text2);
+      }else{
+        $text.innerHTML = "学籍番号が不正な値です。もう一度入力してください"
+      }
+    }
+
+    async function func(){
+      seatStatus = await getPersonalInfo.getSeatStatus($getInfo);  
+      for(var i = 0 ; i < seatStatus.length ; i++){
+        if(!seatStatus[i].status){
+          getPersonalInfo.changeSeatStatus(seatStatus[i].seatNumber,"red");
+        }
+      }    
+    }
+
+    </script>
+  </body>
+</html>
