@@ -1,3 +1,6 @@
+This repo has been moved to the KDDI technology organization. It will no longer be updated here. For the latest information, please go to the following URL:    
+[https://github.com/KDDI-Technology/seatmap](https://github.com/KDDI-Technology/seatmap)    
+
 # seatmap
 
 座席の登録と登録されている人の検索が行えるアプリです。
